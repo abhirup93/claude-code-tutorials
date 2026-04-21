@@ -50,6 +50,8 @@ The extension ecosystem built up fast — MCP in Nov 2024, Sub-agents in Jul 202
 
 Let's build.
 
+![Claude Code Stack](claude_code_illustration.png)
+
 ---
 
 ## 1. Getting Started: Install Claude Code in VS Code
