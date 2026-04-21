@@ -148,6 +148,8 @@ Python FastAPI service for inventory management.
 - Format: `ruff format .`
 ```
 
+![claude.md Screenshot](claude.md screenshot.png)
+
 ### CLAUDE.md Discovery Order
 
 Claude searches for `CLAUDE.md` in this priority order:
