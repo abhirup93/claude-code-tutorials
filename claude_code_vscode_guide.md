@@ -148,7 +148,7 @@ Python FastAPI service for inventory management.
 - Format: `ruff format .`
 ```
 
-![claude.md Screenshot](claude.md screenshot.png)
+![claude.md Screenshot](claude_md_screenshot.png)
 
 ### CLAUDE.md Discovery Order
 
