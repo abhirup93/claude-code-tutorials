@@ -516,22 +516,95 @@ Claude continues or adjusts
 
 <cite index="11-1">Claude Code GitHub Actions brings AI-powered automation directly into your GitHub workflow. With a simple `@claude` mention in any PR or issue, Claude can analyze code, create pull requests, implement features, and fix bugs — all while following your project's standards.</cite>
 
-### Step 1: Install the GitHub App
+There are **three steps you must complete in order** before any of this works. Most guides skip steps 1 and 2 entirely, which is why people hit 404s and auth errors when they try `/install-github-app`.
 
-The easiest path is running this from inside a Claude Code session:
+---
+
+### Step 1: Install GitHub CLI
+
+Claude Code uses the `gh` CLI under the hood to interact with GitHub — creating PRs, reading issues, pushing branches. Without it installed and authenticated, `/install-github-app` will fail silently or error out.
+
+**macOS:**
+```bash
+brew install gh
+```
+
+**Windows:**
+```bash
+winget install --id GitHub.cli
+```
+
+**Linux (Debian/Ubuntu):**
+```bash
+(type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
+&& sudo mkdir -p -m 755 /etc/apt/keyrings \
+&& wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+   | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+&& sudo apt update && sudo apt install gh -y
+```
+
+Verify it's installed:
+```bash
+gh --version
+```
+
+---
+
+### Step 2: Authenticate the GitHub CLI
+
+Open your **CMD or terminal** (not Claude Code — this is a regular shell step) and run:
+
+```bash
+gh auth login
+```
+
+You'll be walked through an interactive prompt:
+
+```
+? What account do you want to log into?  › GitHub.com
+? What is your preferred protocol for Git operations?  › HTTPS
+? Authenticate Git with your GitHub credentials?  › Yes
+? How would you like to authenticate GitHub CLI?  › Login with a web browser
+
+! First copy your one-time code: XXXX-XXXX
+Press Enter to open github.com in your browser...
+✓ Authentication complete.
+✓ Logged in as your-username
+```
+
+Verify authentication worked:
+```bash
+gh auth status
+```
+
+Expected output:
+```
+github.com
+  ✓ Logged in to github.com as your-username
+  ✓ Git operations for github.com configured to use https protocol
+  ✓ Token: gho_****
+```
+
+> ⚠️ Do not skip this step. `/install-github-app` calls `gh` internally — if `gh` isn't authenticated, the command will fail with a permissions error and you'll have no clear indication why.
+
+---
+
+### Step 3: Run `/install-github-app` from Claude Code
+
+Now open Claude Code — either in your terminal or the VS Code extension — navigate to your project, and run:
 
 ```bash
 > /install-github-app
 ```
 
 This guides you through:
-1. Installing the Claude GitHub App to your repo
+1. Installing the Claude GitHub App to your repo (opens browser for repo selection)
 2. Granting read/write permissions on Contents, Issues, and Pull Requests
-3. Creating `.github/workflows/claude.yml` automatically via a PR
+3. Auto-creating `.github/workflows/claude.yml` in your repo via a PR — merge it to activate
 
-**Manual setup:** Visit `https://github.com/apps/claude` and add `ANTHROPIC_API_KEY` to repo secrets.
+**Manual setup (if `/install-github-app` fails):** Visit `https://github.com/apps/claude`, install to your repo, then add `ANTHROPIC_API_KEY` to repo secrets under Settings → Secrets and variables → Actions.
 
-### Step 2: The Workflow File
+### Step 4: The Workflow File
 
 ```yaml
 # .github/workflows/claude.yml
@@ -565,7 +638,7 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 ```
 
-### Step 3: Use It
+### Step 5: Use It
 
 **Interactive mode** — tag `@claude` in any comment:
 
