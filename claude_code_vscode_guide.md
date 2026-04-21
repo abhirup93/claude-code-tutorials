@@ -18,27 +18,27 @@ Whether you're just getting started or you're already running Claude in your ter
 
 ## Table of Contents
 
-1. [Getting Started: Install Claude Code in VS Code](#1-getting-started)
-2. [Starting a Sample Project & Creating CLAUDE.md with `/init`](#2-claudemd)
-3. [Understanding Claude Code Plugin Settings](#3-settings)
-4. [Using Claude Code in the Terminal](#4-terminal)
-5. [Fixing Bugs with Claude](#5-bug-fixing)
-6. [Working with Slash Commands](#6-slash-commands)
-7. [Using Hooks for Notifications & Automation](#7-hooks)
-8. [Claude Code + GitHub Integration: Automating Dev Tasks](#8-github)
-9. [Using StatusLine: Monitor Context, Tokens & Model](#9-statusline)
-10. [Using `tasks.md` to Track AI Coding Changes](#10-tasks)
-11. [Install, Connect & Use MCP Tools in Claude](#11-mcp)
-12. [MCP vs CLI: When to Use Which](#12-mcp-vs-cli)
-13. [Building Your Own MCP Tool with FastMCP (Python + uv)](#13-fastmcp)
-14. [Connecting Custom MCP with Claude Code](#14-connect-mcp)
-15. [Understanding, Creating & Using Sub-Agents](#15-subagents)
-16. [Building & Automating Workflows with Sub-Agents](#16-subagent-workflows)
-17. [Skills vs MCP vs Sub-Agents vs Slash Commands](#17-decision-matrix)
-18. [Claude Marketplace & Plugins](#18-plugins)
-19. [Effective Ways to Create Skills, Hooks & Commands](#19-creating-extensions)
-20. [Testing AI-Generated Code](#20-testing)
-21. [Final Thoughts](#21-conclusion)
+1. [Getting Started: Install Claude Code in VS Code](#1-getting-started-install-claude-code-in-vs-code)
+2. [Starting a Sample Project & Creating CLAUDE.md with `/init`](#2-starting-a-sample-project-creating-claudemd-with-init)
+3. [Understanding Claude Code Plugin Settings](#3-understanding-claude-code-plugin-settings)
+4. [Using Claude Code in the Terminal](#4-using-claude-code-in-the-terminal)
+5. [Fixing Bugs with Claude](#5-fixing-bugs-with-claude)
+6. [Working with Slash Commands](#6-working-with-slash-commands)
+7. [Using Hooks for Notifications & Automation](#7-using-hooks-for-notifications-automation)
+8. [Claude Code + GitHub Integration: Automating Dev Tasks](#8-claude-code-github-integration-automating-dev-tasks)
+9. [Using StatusLine: Monitor Context, Tokens & Model](#9-using-statusline-monitor-context-tokens-model)
+10. [Using `tasks.md` to Track AI Coding Changes](#10-using-tasksmd-to-track-ai-coding-changes)
+11. [Install, Connect & Use MCP Tools in Claude](#11-install-connect-use-mcp-tools-in-claude)
+12. [MCP vs CLI: When to Use Which](#12-mcp-vs-cli-when-to-use-which)
+13. [Building Your Own MCP Tool with FastMCP (Python + uv)](#13-building-your-own-mcp-tool-with-fastmcp-python-uv)
+14. [Connecting Custom MCP with Claude Code](#14-connecting-custom-mcp-with-claude-code)
+15. [Understanding, Creating & Using Sub-Agents](#15-understanding-creating-using-sub-agents)
+16. [Building & Automating Workflows with Sub-Agents](#16-building-automating-workflows-with-sub-agents)
+17. [Skills vs MCP vs Sub-Agents vs Slash Commands: The Decision Matrix](#17-skills-vs-mcp-vs-sub-agents-vs-slash-commands-the-decision-matrix)
+18. [Claude Marketplace & Plugins](#18-claude-marketplace-plugins)
+19. [Effective Ways to Create Skills, Hooks & Commands](#19-effective-ways-to-create-skills-hooks-commands)
+20. [Testing AI-Generated Code](#20-testing-ai-generated-code)
+21. [Final Thoughts](#21-final-thoughts)
 
 ---
 
@@ -52,7 +52,7 @@ Let's build.
 
 ---
 
-## 1. Getting Started: Install Claude Code in VS Code {#1-getting-started}
+## 1. Getting Started: Install Claude Code in VS Code
 
 ### Prerequisites
 
@@ -105,7 +105,7 @@ claude   # launches Claude Code
 
 ---
 
-## 2. Starting a Sample Project & Creating CLAUDE.md with `/init` {#2-claudemd}
+## 2. Starting a Sample Project & Creating CLAUDE.md with `/init`
 
 ### What is CLAUDE.md?
 
@@ -173,7 +173,7 @@ Claude searches for `CLAUDE.md` in this priority order:
 
 ---
 
-## 3. Understanding Claude Code Plugin Settings {#3-settings}
+## 3. Understanding Claude Code Plugin Settings
 
 Claude Code settings live at `~/.claude/settings.json` (user-level) and `.claude/settings.json` (project-level). Project-level overrides user-level.
 
@@ -219,7 +219,7 @@ Cycle permission modes with `Meta+M` (Mac) / `Alt+M` (Windows/Linux) during a se
 
 ---
 
-## 4. Using Claude Code in the Terminal {#4-terminal}
+## 4. Using Claude Code in the Terminal
 
 The terminal is Claude Code's native environment. The VS Code extension is a UI layer on top of the same CLI.
 
@@ -265,7 +265,7 @@ Claude reads files, follows imports, and produces a structured summary — no gr
 
 ---
 
-## 5. Fixing Bugs with Claude {#5-bug-fixing}
+## 5. Fixing Bugs with Claude
 
 This is where most people start — and where Claude Code genuinely shines.
 
@@ -329,7 +329,7 @@ Run tests to verify
 
 ---
 
-## 6. Working with Slash Commands {#6-slash-commands}
+## 6. Working with Slash Commands
 
 Slash commands are user-initiated shortcuts — deterministic entry points into repeatable workflows.
 
@@ -400,7 +400,7 @@ This creates `/deploy` that only you can invoke — Claude will never call it on
 
 ---
 
-## 7. Using Hooks for Notifications & Automation {#7-hooks}
+## 7. Using Hooks for Notifications & Automation
 
 Hooks are **deterministic scripts** that fire at specific lifecycle events. They run outside Claude's reasoning loop — no AI involved, just pure automation.
 
@@ -512,7 +512,7 @@ Claude continues or adjusts
 
 ---
 
-## 8. Claude Code + GitHub Integration: Automating Dev Tasks {#8-github}
+## 8. Claude Code + GitHub Integration: Automating Dev Tasks
 
 <cite index="11-1">Claude Code GitHub Actions brings AI-powered automation directly into your GitHub workflow. With a simple `@claude` mention in any PR or issue, Claude can analyze code, create pull requests, implement features, and fix bugs — all while following your project's standards.</cite>
 
@@ -650,46 +650,143 @@ jobs:
 
 ---
 
-## 9. Using StatusLine: Monitor Context, Tokens & Model {#9-statusline}
+## 9. Using StatusLine: Monitor Context, Tokens & Model
 
-Claude Code has a built-in status overlay that tells you what's consuming your context window and which model you're running.
+The StatusLine is one of the most underrated features in Claude Code. It's a persistent, real-time status bar at the bottom of your session that shows you exactly what's happening — model, context usage, token counts, git branch — without you having to ask.
 
-### Activating StatusLine
+The real power comes from making it **custom**. You wire up a shell script, Claude Code pipes fresh JSON into it on every render cycle, and whatever your script prints to `stdout` becomes the status line. Stateless, composable, zero overhead.
+
+### Wiring It Up in `settings.local.json`
+
+```json
+{
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/scripts/statusline-command.sh"
+  }
+}
+```
+
+Claude Code will run this script periodically and display the output. The script receives a JSON payload via `stdin` containing the full session state.
+
+### A Real-World StatusLine Script
+
+Here's a production statusline script that surfaces git branch, model, context percentage (with colour-coded warnings), and token counts — all parsed from the JSON Claude Code pipes in:
 
 ```bash
-> /status
+#!/usr/bin/env bash
+# Claude Code status line script
+# Shows: git branch | model | context usage | token counts
+
+input=$(cat)
+
+# Parse fields from the JSON payload Claude Code pipes in via stdin
+model=$(echo "$input"        | jq -r '.model.display_name // "Unknown Model"')
+cwd=$(echo "$input"          | jq -r '.workspace.current_dir // .cwd // ""')
+used_pct=$(echo "$input"     | jq -r '.context_window.used_percentage // empty')
+input_tokens=$(echo "$input" | jq -r '.context_window.current_usage.input_tokens // empty')
+output_tokens=$(echo "$input"| jq -r '.context_window.current_usage.output_tokens // empty')
+
+# Get git branch (skip optional locks to avoid conflicts)
+branch=""
+if [ -n "$cwd" ] && [ -d "$cwd/.git" ] || git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
+  branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null)
+fi
+
+# Build output parts
+parts=()
+
+# Git branch — cyan
+if [ -n "$branch" ]; then
+  parts+=("$(printf '\033[36m\xef\x94\xa0 %s\033[0m' "$branch")")
+fi
+
+# Model name — purple/magenta
+if [ -n "$model" ]; then
+  parts+=("$(printf '\033[35m\xe2\xa7\xab %s\033[0m' "$model")")
+fi
+
+# Context usage — colour-coded by threshold
+if [ -n "$used_pct" ]; then
+  used_int=$(printf '%.0f' "$used_pct")
+  if [ "$used_int" -ge 80 ]; then
+    color='\033[31m'   # red   ≥ 80%
+  elif [ "$used_int" -ge 50 ]; then
+    color='\033[33m'   # yellow ≥ 50%
+  else
+    color='\033[32m'   # green  < 50%
+  fi
+  parts+=("$(printf "${color}ctx: %s%% used\033[0m" "$used_int")")
+fi
+
+# Token counts (only when both are available)
+if [ -n "$input_tokens" ] && [ -n "$output_tokens" ]; then
+  parts+=("$(printf '\033[90min:%s out:%s\033[0m' "$input_tokens" "$output_tokens")")
+fi
+
+# Join parts with a separator and print
+(IFS='  '; echo "${parts[*]}")
 ```
 
-Returns real-time stats:
+### How It Works
+
+Claude Code pipes a **fresh JSON blob to `stdin`** on every render cycle. Your script is stateless — it parses, formats, and exits. No polling, no background processes.
+
+The JSON payload structure looks like this:
+
+```json
+{
+  "model": { "display_name": "claude-sonnet-4-6" },
+  "workspace": { "current_dir": "/home/user/my-project" },
+  "context_window": {
+    "used_percentage": 34.2,
+    "remaining_percentage": 65.8,
+    "current_usage": {
+      "input_tokens": 12400,
+      "output_tokens": 3100
+    }
+  }
+}
+```
+
+The `jq -r '... // empty'` pattern on each field is deliberate defensive coding — if a field isn't available yet (e.g. token counts early in a session), it returns empty rather than crashing the whole status line.
+
+### What the Output Looks Like
 
 ```
-Model:        claude-sonnet-4-6
-Context used: 42,318 / 200,000 tokens (21%)
-Session cost: ~$0.08
-Active MCPs:  github (1.2k tokens), filesystem (0.4k tokens)
-Hooks:        3 registered (PostToolUse ×2, Stop ×1)
+ main   claude-sonnet-4-6   ctx: 34% used   in:12400 out:3100
+  │           │                    │                │
+cyan       purple               green           dark grey
+                              (→ yellow ≥ 50%)
+                              (→ red    ≥ 80%)
 ```
-
-### Monitoring Context During Long Tasks
-
-<cite index="1-1">Run `/mcp` to see token costs per server. Disconnect servers you're not actively using.</cite> Each MCP server you have connected consumes tokens from your context window even when idle.
 
 ### Context Management Strategies
 
-| Signal | Action |
-|---|---|
-| Context > 60% | Run `/compact` to summarize history |
-| Context > 80% | Start a fresh session with `/clear` |
-| MCP overhead high | `/mcp disable <server>` when not needed |
-| Sub-agent spawned | It has its own context window — no cost to main session |
+Use the colour thresholds as action signals:
 
-### StatusLine in VS Code
+| StatusLine Colour | Context % | Action |
+|---|---|---|
+| 🟢 Green | < 50% | You're fine, keep going |
+| 🟡 Yellow | 50–79% | Consider `/compact` to summarise history |
+| 🔴 Red | ≥ 80% | Run `/compact` or start fresh with `/clear` |
+| — | MCP overhead high | `/mcp disable <server>` to free tokens |
+| — | Sub-agent spawned | Isolated context — no cost to your main session |
 
-The VS Code extension shows a persistent status bar at the bottom of the editor with model name, context percentage, and session cost. This updates live as Claude works.
+### One Tip on File Location
+
+Keep this script somewhere stable — not in `Downloads/`. A good home is:
+
+```bash
+~/.claude/scripts/statusline-command.sh
+chmod +x ~/.claude/scripts/statusline-command.sh
+```
+
+Then reference it in `settings.local.json` with the `~` path. This way it survives across project changes and won't get accidentally deleted.
 
 ---
 
-## 10. Using `tasks.md` to Track AI Coding Changes {#10-tasks}
+## 10. Using `tasks.md` to Track AI Coding Changes
 
 When Claude makes multiple changes across a session, it's easy to lose track of what was added, modified, or refactored. A `tasks.md` file acts as a living changelog for your AI-assisted work.
 
@@ -735,7 +832,7 @@ This becomes a searchable, reviewable history of everything Claude touched — e
 
 ---
 
-## 11. Install, Connect & Use MCP Tools in Claude {#11-mcp}
+## 11. Install, Connect & Use MCP Tools in Claude
 
 **MCP (Model Context Protocol)** is Anthropic's open standard for connecting Claude to external tools and data sources. Think of it as USB-C for AI — a universal adapter for GitHub, databases, APIs, and internal services.
 
@@ -814,7 +911,7 @@ External System
 
 ---
 
-## 12. MCP vs CLI: When to Use Which {#12-mcp-vs-cli}
+## 12. MCP vs CLI: When to Use Which
 
 This is a question that trips up even experienced users. Here's the decision framework:
 
@@ -872,7 +969,7 @@ This is a question that trips up even experienced users. Here's the decision fra
 
 ---
 
-## 13. Building Your Own MCP Tool with FastMCP (Python + uv) {#13-fastmcp}
+## 13. Building Your Own MCP Tool with FastMCP (Python + uv)
 
 **FastMCP** is the official high-level Python framework for building MCP servers. It turns standard Python functions into MCP tools with a single decorator — no protocol boilerplate required.
 
@@ -981,7 +1078,7 @@ The **docstring** of each function becomes the tool description that Claude read
 
 ---
 
-## 14. Connecting Custom MCP with Claude Code {#14-connect-mcp}
+## 14. Connecting Custom MCP with Claude Code
 
 ### Method 1: FastMCP Install Command (Recommended)
 
@@ -1058,7 +1155,7 @@ Claude detects your `run_linter` tool and calls it automatically.
 
 ---
 
-## 15. Understanding, Creating & Using Sub-Agents {#15-subagents}
+## 15. Understanding, Creating & Using Sub-Agents
 
 Sub-agents are **mini Claude instances with their own isolated context windows**. They handle specific tasks and report summaries back to the main session.
 
@@ -1154,7 +1251,7 @@ This isolation prevents context bloat. Use sub-agents for work that doesn't need
 
 ---
 
-## 16. Building & Automating Workflows with Sub-Agents {#16-subagent-workflows}
+## 16. Building & Automating Workflows with Sub-Agents
 
 Sub-agents become powerful when you chain them into pipelines.
 
@@ -1245,7 +1342,7 @@ Claude creates PR via GitHub MCP
 
 ---
 
-## 17. Skills vs MCP vs Sub-Agents vs Slash Commands: The Decision Matrix {#17-decision-matrix}
+## 17. Skills vs MCP vs Sub-Agents vs Slash Commands: The Decision Matrix
 
 This is the question that matters most for designing effective Claude Code setups.
 
@@ -1297,7 +1394,7 @@ This is the question that matters most for designing effective Claude Code setup
 
 ---
 
-## 18. Claude Marketplace & Plugins {#18-plugins}
+## 18. Claude Marketplace & Plugins
 
 <cite index="3-1">Plugins are a lightweight way to package and share any combination of: Slash commands, Subagents, MCP servers, and Hooks. You can install plugins directly within Claude Code using the `/plugin` command, now in public beta.</cite>
 
@@ -1345,7 +1442,7 @@ Host it on GitHub and share the URL. Teammates install with `/plugin install htt
 
 ---
 
-## 19. Effective Ways to Create Skills, Hooks & Commands {#19-creating-extensions}
+## 19. Effective Ways to Create Skills, Hooks & Commands
 
 ### The Anatomy of a Good Skill
 
@@ -1423,7 +1520,7 @@ Hook output to stdout is injected into Claude's context. If you return structure
 
 ---
 
-## 20. Testing AI-Generated Code {#20-testing}
+## 20. Testing AI-Generated Code
 
 AI-generated code requires the same testing discipline as human-written code — arguably more, because AI can produce plausible-looking code with subtle logical errors.
 
@@ -1497,7 +1594,7 @@ This runs your test suite every time Claude finishes a task. The output is surfa
 
 ---
 
-## 21. Final Thoughts {#21-conclusion}
+## 21. Final Thoughts
 
 Claude Code in 2026 is not a code autocomplete tool. It's an orchestration platform — one where the AI doesn't just suggest changes but plans, executes, tests, reviews, and ships them.
 
