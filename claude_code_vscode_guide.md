@@ -783,6 +783,8 @@ jobs:
           # or https://code.claude.com/docs/en/cli-reference for available options
 ```
 
+![Claude Code in GitHub Actions](Claude_Code_in_GitHub_Actions.png)
+
 ### Security Checklist
 
 - ✅ Always use `${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}` — never hardcode keys
