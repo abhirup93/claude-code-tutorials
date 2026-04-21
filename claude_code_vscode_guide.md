@@ -1767,6 +1767,4 @@ One more thing: always review what Claude builds. The tools are remarkable, the 
 
 ---
 
-## Hashtags
-
 `#ClaudeCode` `#AIEngineering` `#DeveloperTools` `#VSCode` `#MCP` `#ModelContextProtocol` `#AIAgents` `#FastMCP` `#GitHubActions` `#DevAutomation` `#Anthropic` `#AICoding` `#SoftwareEngineering` `#PythonDevelopment` `#DataEngineering` `#LLMTools` `#AgenticAI` `#Productivity` `#OpenSource` `#BuildWithClaude`
