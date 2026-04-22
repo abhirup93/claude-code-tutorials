@@ -50,8 +50,6 @@ The extension ecosystem built up fast — MCP in Nov 2024, Sub-agents in Jul 202
 
 Let's build.
 
-![Claude Code Stack](claude_code_illustration.png)
-
 ---
 
 ## 1. Getting Started: Install Claude Code in VS Code
@@ -149,8 +147,6 @@ Python FastAPI service for inventory management.
 - Lint: `ruff check .`
 - Format: `ruff format .`
 ```
-
-![claude.md Screenshot](claude_md_screenshot.png)
 
 ### CLAUDE.md Discovery Order
 
@@ -606,7 +602,7 @@ This guides you through:
 2. Granting read/write permissions on Contents, Issues, and Pull Requests
 3. Auto-creating `.github/workflows/claude.yml` in your repo via a PR — merge it to activate
 
-**Manual setup (if `/install-github-app` fails):** Visit `https://github.com/apps/claude`, install to your repo, then add secrets.CLAUDE_CODE_OAUTH_TOKEN to repo secrets under Settings → Secrets and variables → Actions.
+**Manual setup (if `/install-github-app` fails):** Visit `https://github.com/apps/claude`, install to your repo, then add `ANTHROPIC_API_KEY` to repo secrets under Settings → Secrets and variables → Actions.
 
 ### Step 4: The Workflow File
 
@@ -784,8 +780,6 @@ jobs:
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
 ```
-
-![Claude Code in GitHub Actions](Claude_Code_in_GitHub_Actions.png)
 
 ### Security Checklist
 
@@ -1766,5 +1760,7 @@ One more thing: always review what Claude builds. The tools are remarkable, the 
 *Happy building. If this helped, follow me on [Medium @abhirup.pal93](https://medium.com/@abhirup.pal93) and [LinkedIn](https://linkedin.com/in/abhirup-pal-776066a1) for more data and AI engineering content.*
 
 ---
+
+## Hashtags
 
 `#ClaudeCode` `#AIEngineering` `#DeveloperTools` `#VSCode` `#MCP` `#ModelContextProtocol` `#AIAgents` `#FastMCP` `#GitHubActions` `#DevAutomation` `#Anthropic` `#AICoding` `#SoftwareEngineering` `#PythonDevelopment` `#DataEngineering` `#LLMTools` `#AgenticAI` `#Productivity` `#OpenSource` `#BuildWithClaude`
