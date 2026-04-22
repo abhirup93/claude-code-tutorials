@@ -602,7 +602,7 @@ This guides you through:
 2. Granting read/write permissions on Contents, Issues, and Pull Requests
 3. Auto-creating `.github/workflows/claude.yml` in your repo via a PR — merge it to activate
 
-**Manual setup (if `/install-github-app` fails):** Visit `https://github.com/apps/claude`, install to your repo, then add `ANTHROPIC_API_KEY` to repo secrets under Settings → Secrets and variables → Actions.
+**Manual setup (if `/install-github-app` fails):** Visit `https://github.com/apps/claude`, install to your repo, then add `ANTHROPIC_API_KEY` or `CLAUDE_CODE_OAUTH_TOKEN` to repo secrets under Settings → Secrets and variables → Actions.
 
 ### Step 4: The Workflow File
 
